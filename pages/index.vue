@@ -1,4 +1,11 @@
+<script setup lang="ts">
+import { fetchData, type IntensityData } from '~/utlis'
+
+const currentHalfHourData: { data: IntensityData[] } = await fetchData("https://api.carbonintensity.org.uk/intensity")
+
+const currentHalfHour = currentHalfHourData.data[0]
+</script>
+
 <template>
-    <!-- TODO: add real-time charts here -->
-    <h1>index</h1>
+    <ConditionCard title="Past Half Hour" :cardData="currentHalfHour" />
 </template>

@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
     <div class="bg-emerald-600 h-14 flex items-center justify-center md:justify-start px-4">
         <ULink to="/" class="md:text-3xl font-semibold text-slate-100">
@@ -15,8 +12,10 @@
             </div>
         </template>
     </UPopover>
-    <div class="flex">
+    <div class="flex justify-center">
         <NavLinks customClasses="w-[15%] border-r-2 min-h-dvh hidden md:block" />
-        <NuxtPage class="w-[85%]" />
+        <div class="w-[85%] p-4">
+            <NuxtPage />
+        </div>
     </div>
 </template>
