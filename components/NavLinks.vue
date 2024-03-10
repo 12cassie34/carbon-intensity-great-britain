@@ -13,7 +13,7 @@ const { customClasses } = defineProps<{
 <template>
     <UVerticalNavigation :links="links" :class="customClasses">
         <template #default="{ link }">
-            <span class="group-hover:text-primary relative">{{ link.label }}</span>
+            <span class="group-hover:text-primary relative text-2xl">{{ link.label }}</span>
         </template>
     </UVerticalNavigation>
 </template>
