@@ -14,7 +14,7 @@
     </UPopover>
     <div class="flex justify-center">
         <NavLinks customClasses="w-[15%] border-r-2 min-h-dvh hidden md:block" />
-        <div class="w-[85%] p-4">
+        <div class="w-[85%] md:p-4 my-4">
             <NuxtPage />
         </div>
     </div>
