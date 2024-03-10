@@ -1,18 +1,22 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 import { fetchData, formatBarChartData, type IntensityData } from '~/utlis'
 
-const currentHalfHourData: { data: IntensityData[] } = await fetchData("https://api.carbonintensity.org.uk/intensity")
+const currentHalfHourData: { data: IntensityData[] } = await fetchData('https://api.carbonintensity.org.uk/intensity')
 const past24HoursData = await fetchData(`https://api.carbonintensity.org.uk/intensity/${new Date().toISOString()}/pt24h`)
-
-const currentHalfHour = currentHalfHourData.data[0]
+const forecast24HoursData = await fetchData(`https://api.carbonintensity.org.uk/intensity/${new Date().toISOString()}/fw24h`)
 </script>
 
 <template>
-    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <ConditionCard title="Past Half Hour" :cardData="currentHalfHour" />
-        <Card title="Past 24 Hours">
+    <div class='grid grid-cols-1 gap-4 lg:grid-cols-2'>
+        <ConditionCard title='Past Half Hour' :cardData='currentHalfHourData.data[0]' />
+        <Card title='Past 24 Hours'>
             <template #content>
-                <BarChart :chartData="formatBarChartData(past24HoursData.data)"/>
+                <BarChart :svgId="'past-24-hours-svg'" :chartData='formatBarChartData(past24HoursData.data)'/>
+            </template>
+        </Card>
+        <Card title='Forecast 24 Hours'>
+            <template #content>
+                <BarChart :svgId="'forecast-24-hours-svg'" :chartData='formatBarChartData(forecast24HoursData.data, true)'/>
             </template>
         </Card>
     </div>

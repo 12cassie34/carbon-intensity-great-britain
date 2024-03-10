@@ -17,25 +17,26 @@ const barColourHoverMap: Record<IntensityDegree, string> = {
 
 const isIntensityType = (value: unknown): value is IntensityDegree => typeof value === 'string'
 
-const { customClasses, chartData, barColours = barColourMap, barHoverColours = barColourHoverMap } = defineProps<{
+const { customClasses, svgId, chartData, barColours = barColourMap, barHoverColours = barColourHoverMap } = defineProps<{
     customClasses?: string,
     barColours?: Record<IntensityDegree, string>,
     barHoverColours?: Record<IntensityDegree, string>,
+    svgId: string,
     chartData: BarChartData[]
 }>()
 
-const svgRef: Ref<SVGAElement | null> = ref(null)
+const containerRef: Ref<HTMLElement | null> = ref(null)
 
 onMounted(() => {
     const width = '100%'
-    const widthNumber = svgRef.value!.clientWidth
+    const widthNumber = containerRef.value!.clientWidth
     const height = 300
     const marginTop = 20
     const marginRight = 0
     const marginBottom = 30
     const marginLeft = 20
 
-    const svg = d3.select('svg').attr('width', width).attr('height', height)
+    const svg = d3.select(`svg#${svgId}`).attr('width', width).attr('height', height)
 
     const x = d3.scaleBand()
         .domain(chartData.map(d => d.time))
@@ -58,7 +59,7 @@ onMounted(() => {
         .range([height - marginBottom, marginTop])
     const yAxis = d3.axisLeft(y).tickSize(0)
 
-    const tooltip = d3.select('#svg-container')
+    const tooltip = d3.select(`#svg-container-${svgId}`)
         .append('div')
         .style('position', 'absolute')
         .style('z-index', '10')
@@ -111,7 +112,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class='w-full relative' :class='customClasses' ref='svgRef' id='svg-container'>
-        <svg></svg>
+    <div class='w-full relative' :class='customClasses' ref='containerRef' :id='`svg-container-${svgId}`'>
+        <svg :id='svgId'></svg>
     </div>
 </template>

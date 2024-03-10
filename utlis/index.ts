@@ -1,4 +1,4 @@
-type FormatStyle = "full" | "long" | "medium" | "short" | undefined
+type FormatStyle = 'full' | 'long' | 'medium' | 'short' | undefined
 export type IntensityDegree = 'low' | 'moderate' | 'high'
 
 interface FormatTimeArgs {
@@ -33,18 +33,18 @@ export const fetchData = async (url: string) => {
     return json
 }
 
-export const formatTime = ({ date, lang = "en-UK", dateStyle, timeStyle = "short" }: FormatTimeArgs) => {
+export const formatTime = ({ date, lang = 'en-UK', dateStyle, timeStyle = 'short' }: FormatTimeArgs) => {
     return new Intl.DateTimeFormat(lang, {
         dateStyle: dateStyle,
         timeStyle: timeStyle
     }).format(new Date(date))
 }
 
-export const formatBarChartData = (data: IntensityData[]): BarChartData[] => {
+export const formatBarChartData = (data: IntensityData[], isForecast?: boolean): BarChartData[] => {
     return data.map(d => {
         return {
             time: d.from,
-            value: d.intensity.actual,
+            value: isForecast ? d.intensity.forecast : d.intensity.actual,
             degree: d.intensity.index
         }
     })
