@@ -113,7 +113,6 @@ const buildChart = () => {
 onMounted(() => {
     buildChart()
 })
-
 </script>
 
 <template>
