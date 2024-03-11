@@ -17,7 +17,7 @@ const barColourHoverMap: Record<IntensityDegree, string> = {
 
 const isIntensityType = (value: unknown): value is IntensityDegree => typeof value === 'string'
 
-const { customClasses, svgId, chartData, barColours = barColourMap, barHoverColours = barColourHoverMap } = defineProps<{
+const props = defineProps<{
     customClasses?: string,
     barColours?: Record<IntensityDegree, string>,
     barHoverColours?: Record<IntensityDegree, string>,
@@ -27,7 +27,7 @@ const { customClasses, svgId, chartData, barColours = barColourMap, barHoverColo
 
 const containerRef: Ref<HTMLElement | null> = ref(null)
 
-onMounted(() => {
+const buildChart = () => {
     const width = '100%'
     const widthNumber = containerRef.value!.clientWidth
     const height = 300
@@ -36,10 +36,10 @@ onMounted(() => {
     const marginBottom = 30
     const marginLeft = 20
 
-    const svg = d3.select(`svg#${svgId}`).attr('width', width).attr('height', height)
+    const svg = d3.select(`svg#${props.svgId}`).attr('width', width).attr('height', height)
 
     const x = d3.scaleBand()
-        .domain(chartData.map(d => d.time))
+        .domain(props.chartData.map(d => d.time))
         .range([marginLeft, widthNumber - marginRight])
         .padding(0.1)
     const xAxis = d3.axisBottom(x)
@@ -55,11 +55,11 @@ onMounted(() => {
         })
 
     const y = d3.scaleLinear()
-        .domain([0, d3.max(chartData, d => d.value) || 0]).nice()
+        .domain([0, d3.max(props.chartData, d => d.value) || 0]).nice()
         .range([height - marginBottom, marginTop])
     const yAxis = d3.axisLeft(y).tickSize(0)
 
-    const tooltip = d3.select(`#svg-container-${svgId}`)
+    const tooltip = d3.select(`#svg-container-${props.svgId}`)
         .append('div')
         .style('position', 'absolute')
         .style('z-index', '10')
@@ -70,9 +70,9 @@ onMounted(() => {
 
     const bar = svg.append('g')
         .selectAll('rect')
-        .data(chartData)
+        .data(props.chartData)
         .join('rect')
-        .attr('fill', d => barColours[d.degree])
+        .attr('fill', d => props.barColours ? props.barColours[d.degree] : barColourMap[d.degree])
         .attr('x', d => x(d.time) || 0)
         .attr('y', d => y(d.value))
         .attr('height', d => y(0) - y(d.value))
@@ -87,14 +87,14 @@ onMounted(() => {
                 .style('left', `${d.offsetX + 10}px`)
             const degree = d.srcElement.__data__.degree
             if (isIntensityType(degree)) {
-                d3.select(this).attr('fill', barHoverColours[degree])
+                d3.select(this).attr('fill', props.barHoverColours ? props.barHoverColours[degree] : barColourHoverMap[degree])
             }
         })
         .on('mouseout', function (d) {
             tooltip.style('visibility', 'hidden')
             const degree = d.srcElement.__data__.degree
             if (isIntensityType(degree)) {
-                d3.select(this).attr('fill', barColours[degree])
+                d3.select(this).attr('fill', props.barColours ? props.barColours[degree] : barColourMap[degree])
             }
         })
 
@@ -108,7 +108,12 @@ onMounted(() => {
         .call(d3.axisLeft(y).tickFormat((y) => y.toString()))
         .call(yAxis)
         .call(g => g.select('.domain').remove())
+}
+
+onMounted(() => {
+    buildChart()
 })
+
 </script>
 
 <template>

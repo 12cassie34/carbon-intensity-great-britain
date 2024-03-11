@@ -25,6 +25,7 @@ export interface BarChartData {
 }
 
 export const INTENSITY_UNIT = 'g/kWh'
+export const FULL_DATE_FORMAT = 'dd MMMM yyy'
 
 export const fetchData = async (url: string) => {
     const respon = await fetch(url)
