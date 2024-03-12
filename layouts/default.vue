@@ -1,6 +1,10 @@
 <script setup lang='ts'>
+import type { PageRoutes } from '~/utlis';
+
 const { logUserOut } = useAuthStore()
-const { userName } = storeToRefs(useAuthStore())
+const { userName, authPagesWithOrgs } = storeToRefs(useAuthStore())
+
+const route = useRoute()
 
 const handleLogout = async () => {
     logUserOut();
@@ -27,9 +31,9 @@ const handleLogout = async () => {
         <div class="flex justify-center">
             <NavLinks customClasses="w-[15%] border-r-2 min-h-dvh hidden md:block" />
             <div class="w-[85%] md:p-4 my-4">
+                <h5 v-if="route.path !== '/' && authPagesWithOrgs[route.name as PageRoutes].length" class="text-green-300">Authenticating by: {{ (authPagesWithOrgs[route.name as PageRoutes]).join(', ') }}</h5>
                 <NuxtPage />
             </div>
         </div>
     </div>
-
 </template>

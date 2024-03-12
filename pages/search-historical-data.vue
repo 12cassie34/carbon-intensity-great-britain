@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import { format } from 'date-fns'
 
-import { FULL_DATE_FORMAT, fetchData, formatBarChartData, type IntensityData } from '~/utlis';
+import { FULL_DATE_FORMAT, fetchData, formatBarChartData, type IntensityData } from '~/utlis'
 
 definePageMeta({
     middleware: 'auth'

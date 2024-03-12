@@ -1,15 +1,25 @@
+import { isPageRouteName } from "~/utlis"
+
 export default defineNuxtRouteMiddleware((to, from) => {
-    const { authenticated, userName: stateUserName } = storeToRefs(useAuthStore())
+    const { authenticated, authPagesWithOrgs } = storeToRefs(useAuthStore())
 
     const token = useCookie('token')
-    const userName = useCookie('userName')
 
-    if (token.value && userName.value) {
+    if (token.value) {
         authenticated.value = true
-        stateUserName.value = userName.value
     }
 
     if (!authenticated.value) {
         return navigateTo('/login')
+    }
+
+    const toPageName = to.name
+    if (isPageRouteName(toPageName) && to.path !== '/') {
+        if (!authPagesWithOrgs.value[toPageName]) {
+            return navigateTo('/unauthorised-redirect')
+        }
+        if (!authPagesWithOrgs.value[toPageName].length) {
+            return navigateTo('/unauthorised-redirect')
+        }
     }
 })
