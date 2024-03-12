@@ -13,15 +13,22 @@
     "vue": "latest"
   },
   "dependencies": {
+    "@iconify-json/carbon": "^1.1.31",
     "@nuxt/ui": "^2.14.2",
+    "@pinia/nuxt": "^0.5.1",
+    "add": "^2.0.6",
     "d3": "^7.8.5",
     "date-fns": "^3.3.1",
     "nuxt": "^3.10.3",
+    "pinia": "^2.1.7",
     "v-calendar": "^3.1.2",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.4.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@types/d3": "^7.4.3",
     "@types/lodash": "^4.14.202"
   }

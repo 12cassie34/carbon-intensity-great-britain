@@ -1,7 +1,11 @@
 <script setup lang='ts'>
 import { format } from 'date-fns'
 
-import { FULL_DATE_FORMAT, fetchData, formatBarChartData, type IntensityData } from '~/utlis';
+import { FULL_DATE_FORMAT, fetchData, formatBarChartData, type IntensityData } from '~/utlis'
+
+definePageMeta({
+    middleware: 'auth'
+})
 
 const specificDate = ref(new Date())
 const updateDate = (date: Date) => specificDate.value = date
@@ -17,7 +21,8 @@ watch(specificDate, async () => {
 
 <template>
     <DatePickerDropdown :date='specificDate' :handleUpdateDate="updateDate" class="mb-4" />
-    <Card :title='`Carbon Intensity in ${format(specificDate, FULL_DATE_FORMAT)}`' :key="specificDate.valueOf()" v-if="!!specificDateData">
+    <Card :title='`Carbon Intensity in ${format(specificDate, FULL_DATE_FORMAT)}`' :key="specificDate.valueOf()"
+        v-if="!!specificDateData">
         <template #content>
             <BarChart :svgId="'specific-date-svg'" :chart-data='formatBarChartData(specificDateData.data)' />
         </template>

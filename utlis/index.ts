@@ -1,5 +1,6 @@
 type FormatStyle = 'full' | 'long' | 'medium' | 'short' | undefined
 export type IntensityDegree = 'low' | 'moderate' | 'high'
+export type PageRoutes = 'search-historical-data' | 'carbon-generation-from'
 
 interface FormatTimeArgs {
     date: string,
@@ -26,6 +27,8 @@ export interface BarChartData {
 
 export const INTENSITY_UNIT = 'g/kWh'
 export const FULL_DATE_FORMAT = 'dd MMMM yyy'
+
+export const isPageRouteName = (value: unknown): value is PageRoutes => typeof value === 'string'
 
 export const fetchData = async (url: string) => {
     const respon = await fetch(url)

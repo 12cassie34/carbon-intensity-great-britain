@@ -1,6 +1,10 @@
 <script setup lang='ts'>
 import { fetchData, formatBarChartData, type IntensityData } from '~/utlis'
 
+definePageMeta({
+    middleware: 'auth'
+})
+
 const todayData = await fetchData('https://api.carbonintensity.org.uk/intensity/date')
 const currentHalfHourData: { data: IntensityData[] } = await fetchData('https://api.carbonintensity.org.uk/intensity')
 const past24HoursData = await fetchData(`https://api.carbonintensity.org.uk/intensity/${new Date().toISOString()}/pt24h`)
