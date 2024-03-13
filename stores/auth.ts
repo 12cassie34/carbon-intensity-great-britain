@@ -38,7 +38,7 @@ export const useAuthStore = defineStore('auth', {
             if (isPageRouteName(page)) {
                 return state.authPagesWithOrgs[page].length
             }
-        })
+        }) || []
     }
   },
   actions: {
