@@ -25,6 +25,28 @@ export interface BarChartData {
     degree: IntensityDegree
 }
 
+export interface GridItemProps {
+    i: string,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    minW?: number,
+    minH?: number,
+    maxW?: number,
+    maxH?: number,
+    isDraggable?: boolean,
+    isResizable?: boolean,
+    isBounded?: boolean,
+    static?: boolean,
+    dragIgnoreFrom?: string,
+    dragAllowFrom?: string,
+    resizeIgnoreFrom?: string,
+    preserveAspectRatio?: boolean,
+    dragOption?: object,
+    resizeOption?: object
+}
+
 export const INTENSITY_UNIT = 'g/kWh'
 export const FULL_DATE_FORMAT = 'dd MMMM yyy'
 
