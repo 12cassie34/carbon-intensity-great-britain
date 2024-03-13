@@ -48,6 +48,9 @@ const buildChart = () => {
             return !(i % 4);
         }))
         .tickFormat((d, i) => {
+            if (props.chartData.length > 100) {
+                return ''
+            }
             return formatTime({
                 date: d,
                 timeStyle: 'short'
