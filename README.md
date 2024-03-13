@@ -13,7 +13,7 @@ In this project, you can explore the carbon intensity in Great Britain to gain i
     | username    | password |
     | -------- | ------- |
     | atuny0  | 9uQFF1Lh    |
-    | hbingley1 | CQutx25i8r     |
+    | hbingley1 | CQutx25i8r    
     | rshawe2    | OWsTbMUgFc    |
 
 ## APIs
@@ -31,3 +31,20 @@ In this project, you can explore the carbon intensity in Great Britain to gain i
 
 - [Pinia](https://pinia.vuejs.org/)
 - [Vue Grid Layout](https://jbaysolutions.github.io/vue-grid-layout/)
+
+## References
+- [How to integrate Vue Grid Layout with Nuxt.js?](https://github.com/jbaysolutions/vue-grid-layout/issues/230#issuecomment-1137344752) by g-tejas
+- [Authentication in Nuxt 3](https://dev.to/rafaelmagalhaes/authentication-in-nuxt-3-375o) by Rafael Magalhaes
+
+## Topics to Explore in Depth
+- [Why it have to set the value to `null` to help D3.js render charts correctly?](https://github.com/12cassie34/carbon-intensity-great-britain/blob/a03ea10e9981bedba99484fca0889937be0aee68/pages/search-historical-data.vue#L16)
+
+## Rabbit Holes
+- `props` can not be destructed, or it will loose their reactivity.
+
+
+
+
+
+
+
