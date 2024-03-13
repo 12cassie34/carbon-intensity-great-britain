@@ -5,8 +5,8 @@ import { FULL_DATE_FORMAT, fetchData, formatBarChartData, type IntensityData } f
 
 const specificDate = ref(new Date())
 const updateDate = (date: Date) => specificDate.value = date
-const initialSpecificDateData = await fetchData(`https://api.carbonintensity.org.uk/intensity/date/${format(specificDate.value, 'yyyy-MMMM-dd')}`)
 
+const initialSpecificDateData = await fetchData(`https://api.carbonintensity.org.uk/intensity/date/${format(specificDate.value, 'yyyy-MMMM-dd')}`)
 const specificDateData = ref<{ data: IntensityData[] } | null>(initialSpecificDateData)
 
 watchEffect(async () => {
@@ -16,7 +16,7 @@ watchEffect(async () => {
 </script>
 
 <template>
-    <DatePickerDropdown :date='specificDate' :handleUpdateDate="updateDate" class="mb-4" />
+    <DatePickerDropdown :date='specificDate' :handle-update-date="updateDate" class="mb-4" />
     <Card :title='`Carbon Intensity in ${format(specificDate, FULL_DATE_FORMAT)}`' :key="specificDate.valueOf()"
         v-if="!!specificDateData">
         <template #content>

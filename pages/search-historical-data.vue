@@ -5,5 +5,8 @@ definePageMeta({
 </script>
 
 <template>
-    <SearchSingleDay />
+    <div class="[&>*+*]:mt-4">
+        <SearchSingleDay />
+        <SearchDayRange />
+    </div>
 </template>

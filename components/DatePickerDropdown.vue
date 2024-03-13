@@ -5,7 +5,7 @@ import { FULL_DATE_FORMAT } from '../utlis'
 
 const { customClasses, date } = defineProps<{
     customClasses?: string,
-    date: Ref<Date>,
+    date: Date,
     handleUpdateDate: (date: Date) => void
 }>()
 </script>

@@ -33,7 +33,6 @@ const attrs = {
 <template>
   <VCalendarDatePicker v-if="date && (typeof date === 'object')" v-model.range="date" :columns="2" v-bind="{ ...attrs, ...$attrs }" />
   <VCalendarDatePicker v-else v-model="date" v-bind="{ ...attrs, ...$attrs }" />
-  <!-- <VCalendarDatePicker v-model="date" v-bind="{ ...attrs, ...$attrs }" /> -->
 </template>
 
 <style>
