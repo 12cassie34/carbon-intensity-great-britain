@@ -1,75 +1,33 @@
-# Nuxt 3 Minimal Starter
+# Carbon Intensity Great Britain
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+In this project, you can explore the carbon intensity in Great Britain to gain insights into electricity production patterns. By understanding the carbon intensity of the electricity we use, we can make informed decisions about our energy consumption, contributing to the fight against climate change.
 
-## Setup
+> <b>What is Carbon Intensity?</b><br>
+> Carbon intensity measures the cleanliness of our electricity. It indicates the amount of carbon dioxide (CO2) emitted to produce a kilowatt-hour (kWh) of electricity.
 
-Make sure to install the dependencies:
+## Main Features
+- An overview dashboard displays today's data and forecasted data. Users can customize their layout by dragging and dropping cards.
+- Search functionality for accessing historical data and gaining deeper insights.
+- Implementation of an authentication router guard to control access to specific pages based on user authentication status.
+  - The accounts to login:
+    | username    | password |
+    | -------- | ------- |
+    | atuny0  | 9uQFF1Lh    |
+    | hbingley1 | CQutx25i8r     |
+    | rshawe2    | OWsTbMUgFc    |
 
-```bash
-# npm
-npm install
+## APIs
+- [Carbon Intensity API](https://carbon-intensity.github.io/api-definitions/?javascript#carbon-intensity-api-v2-0-0)
+- [dummyJSON](https://dummyjson.com/): for mock authentication
+          
+## Tech Stack
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" width="50" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original-wordmark.svg" width="50" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" width="50" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" width="50" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/d3js/d3js-original.svg" width="50" />         
+</div>
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- [Pinia](https://pinia.vuejs.org/)
+- [Vue Grid Layout](https://jbaysolutions.github.io/vue-grid-layout/)
