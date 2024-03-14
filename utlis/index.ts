@@ -19,10 +19,20 @@ export interface IntensityData {
     }
 }
 
+export interface CarbonGeneration {
+    fuel: string,
+    perc: number
+}
+
 export interface BarChartData {
     time: string,
     value: number,
     degree: IntensityDegree
+}
+
+export interface PieChartData {
+    name: string,
+    value: number
 }
 
 export interface GridItemProps {
@@ -72,6 +82,15 @@ export const formatBarChartData = (data: IntensityData[], isForecast?: boolean):
             time: d.from,
             value: isForecast ? d.intensity.forecast : d.intensity.actual,
             degree: d.intensity.index
+        }
+    })
+}
+
+export const formatPieChartData = (data: CarbonGeneration[]) => {
+    return data.map(d => {
+        return {
+            name: d.fuel,
+            value: d.perc
         }
     })
 }

@@ -7,7 +7,7 @@ const past24HoursData = await fetchData(`https://api.carbonintensity.org.uk/inte
 <template>
     <Card title='Past 24 Hours'>
         <template #content>
-            <BarChart :svgId="'past-24-hours-svg'" :chart-data='formatBarChartData(past24HoursData.data)' />
+            <BarChart :svg-id="'past-24-hours-svg'" :chart-data='formatBarChartData(past24HoursData.data)' />
         </template>
     </Card>
 </template>

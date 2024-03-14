@@ -22,7 +22,7 @@ watchEffect(async () => {
     <Card :title='`Carbon Intensity in ${format(startTime, FULL_DATE_FORMAT)} - ${format(endTime, FULL_DATE_FORMAT)}`' :key="startTime.valueOf()"
         v-if="!!dateRangeData">
         <template #content>
-            <BarChart :svgId="'date-range-svg'" :chart-data='formatBarChartData(dateRangeData.data)' />
+            <BarChart :svg-id="'date-range-svg'" :chart-data='formatBarChartData(dateRangeData.data)' />
         </template>
     </Card>
 </template>

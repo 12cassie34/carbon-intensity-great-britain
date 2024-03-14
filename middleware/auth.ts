@@ -18,7 +18,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
         if (!authPagesWithOrgs.value[toPageName]) {
             return navigateTo('/unauthorised-redirect')
         }
-        if (!authPagesWithOrgs.value[toPageName].length) {
+        if (authPagesWithOrgs.value[toPageName] && !authPagesWithOrgs.value[toPageName].length) {
             return navigateTo('/unauthorised-redirect')
         }
     }

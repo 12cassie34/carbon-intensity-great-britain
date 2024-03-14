@@ -7,7 +7,7 @@ const todayData = await fetchData('https://api.carbonintensity.org.uk/intensity/
 <template>
     <Card title='Today Intensity'>
         <template #content>
-            <BarChart :svgId="'today-svg'" :chart-data='formatBarChartData(todayData.data)' />
+            <BarChart :svg-id="'today-svg'" :chart-data='formatBarChartData(todayData.data)' />
         </template>
     </Card>
 </template>
