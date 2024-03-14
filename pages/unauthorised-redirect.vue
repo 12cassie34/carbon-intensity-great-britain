@@ -1,12 +1,10 @@
 <script setup lang='ts'>
-import { isPageRouteName } from '~/utlis';
-
 const isOpen = ref(true)
 
 const { authPages } = useAuthStore()
 
 const handleRedirect = async () => {
-    await navigateTo(`/${authPages[0] || ''}`)
+    await navigateTo(`/${(authPages && authPages.length) ? authPages[0] : ''}`)
 }
 </script>
 

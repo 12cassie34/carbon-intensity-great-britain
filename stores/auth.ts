@@ -36,7 +36,7 @@ export const useAuthStore = defineStore('auth', {
     authPages: (state) => {
         return Object.keys(state.authPagesWithOrgs).filter(page => {
             if (isPageRouteName(page)) {
-                return state.authPagesWithOrgs[page].length
+                return state.authPagesWithOrgs[page]?.length
             }
         }) || []
     }

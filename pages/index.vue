@@ -5,6 +5,7 @@ import GridPastHalfHour from '~/components/Grid/GridPastHalfHour.vue'
 import GridTodayIntensity from '~/components/Grid/GridTodayIntensity.vue'
 import GridPast24Hours from '~/components/Grid/GridPast24Hours.vue'
 import GridForecast24Hours from '~/components/Grid/GridForecast24Hours.vue'
+import GridPastHalfHoursGeneration from '~/components/Grid/GridPastHalfHoursGeneration.vue'
 
 definePageMeta({
     middleware: 'auth'
@@ -14,14 +15,16 @@ const componentMap: Record<string, Component> = {
     'GridPastHalfHour': GridPastHalfHour,
     'GridTodayIntensity': GridTodayIntensity,
     'GridPast24Hours': GridPast24Hours,
-    'GridForecast24Hours': GridForecast24Hours
+    'GridForecast24Hours': GridForecast24Hours,
+    'GridPastHalfHoursGeneration': GridPastHalfHoursGeneration,
 }
 
 const gridContent = ref<GridItemProps[]>([
     { 'x': 0, 'y': 0, 'w': 4, 'h': 14, 'i': 'GridPastHalfHour' },
-    { 'x': 4, 'y': 0, 'w': 8, 'h': 17, 'i': 'GridTodayIntensity' },
-    { 'x': 0, 'y': 19, 'w': 6, 'h': 17, 'i': 'GridPast24Hours' },
-    { 'x': 6, 'y': 19, 'w': 6, 'h': 17, 'i': 'GridForecast24Hours' },
+    { 'x': 0, 'y': 14, 'w': 8, 'h': 17, 'i': 'GridTodayIntensity' },
+    { 'x': 0, 'y': 31, 'w': 6, 'h': 17, 'i': 'GridPast24Hours' },
+    { 'x': 6, 'y': 31, 'w': 6, 'h': 17, 'i': 'GridForecast24Hours' },
+    { 'x': 4, 'y': 0, 'w': 8, 'h': 25, 'i': 'GridPastHalfHoursGeneration' },
 ])
 </script>
 

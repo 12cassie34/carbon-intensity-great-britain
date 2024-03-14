@@ -8,7 +8,7 @@ const forecast24HoursData = await fetchData(`https://api.carbonintensity.org.uk/
 <template>
     <Card title='Forecast 24 Hours'>
         <template #content>
-            <BarChart :svgId="'forecast-24-hours-svg'"
+            <BarChart :svg-id="'forecast-24-hours-svg'"
                 :chart-data='formatBarChartData(forecast24HoursData.data, true)' />
         </template>
     </Card>
